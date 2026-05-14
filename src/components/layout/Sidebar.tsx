@@ -7,7 +7,8 @@ import { useState } from "react";
 const navItems = [
   { href: "/", label: "Countdown", icon: "⏱️" },
   { href: "/convocacao", label: "Convocação", icon: "👕" },
-  { href: "/jogos", label: "Jogos do Brasil", icon: "⚽" },
+  { href: "/jogos", label: "Jogos", icon: "⚽" },
+  { href: "/estadios", label: "Estádios", icon: "🏟️" },
 ];
 
 export default function Sidebar() {
