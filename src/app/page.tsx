@@ -1,14 +1,14 @@
 import CountdownTimer from "@/components/features/countdown/CountdownTimer";
 import { ConvocacaoInfo } from "@/types";
 
-// Convocação da Seleção Brasileira - 20 de maio de 2026, 11:00 BRT (UTC-3)
-const CONVOCACAO_DATE = new Date("2026-05-20T14:00:00Z");
+// Convocação da Seleção Brasileira - 18 de maio de 2026, 17:00 BRT (UTC-3)
+const CONVOCACAO_DATE = new Date("2026-05-18T20:00:00Z");
 
 const convocacao: ConvocacaoInfo = {
   date: CONVOCACAO_DATE,
-  displayDate: "20 de maio de 2026",
-  displayTime: "11h00 (horário de Brasília)",
-  location: "Sede da CBF — Rio de Janeiro, RJ",
+  displayDate: "18 de maio de 2026",
+  displayTime: "17h00 (horário de Brasília)",
+  location: "Museu do Amanhã — Rio de Janeiro, RJ",
   channels: [
     { name: "TV Globo", url: "https://www.globo.com/esporte" },
     { name: "SporTV", url: "https://sportv.globo.com" },
@@ -75,7 +75,7 @@ export default function HomePage() {
                 Local
               </span>
             </div>
-            <p className="text-white font-bold text-lg">Sede da CBF</p>
+            <p className="text-white font-bold text-lg">Museu do Amanhã</p>
             <p className="text-gray-300 text-sm mt-1">Rio de Janeiro, RJ — Brasil</p>
           </div>
 
