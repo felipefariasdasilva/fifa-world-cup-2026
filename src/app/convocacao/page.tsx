@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { players, POSITIONS, POSITION_LABELS, POSITION_ICONS } from "@/data/players";
-import PlayerCard from "@/components/features/convocacao/PlayerCard";
+import ConvocacaoClient from "@/components/features/convocacao/ConvocacaoClient";
 import manifest from "@/data/assets-manifest.json";
 
 export const metadata: Metadata = {
@@ -26,39 +25,12 @@ export default function ConvocacaoPage() {
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-white">Pré-lista de Convocados</h1>
           <p className="text-gray-400 mt-1 text-sm">
-            55 jogadores pré-selecionados · Convocação oficial em 18/05/2026
+            55 jogadores pré-selecionados · Convocação oficial em 18/05/2026 · Clique no jogador para ver detalhes
           </p>
         </div>
 
-        {/* Players by position */}
-        <div className="space-y-10">
-          {POSITIONS.map((position) => {
-            const positionPlayers = players.filter((p) => p.position === position);
-            return (
-              <section key={position}>
-                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-white/10">
-                  <span className="text-2xl">{POSITION_ICONS[position]}</span>
-                  <h2 className="text-lg font-bold text-white">{POSITION_LABELS[position]}</h2>
-                  <span className="ml-auto text-sm text-gray-500 bg-gray-900 px-2 py-0.5 rounded-full">
-                    {positionPlayers.length}
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                  {positionPlayers.map((player) => (
-                    <PlayerCard
-                      key={player.id}
-                      player={player}
-                      clubLogo={clubLogos[player.club] || null}
-                      playerPhoto={playerPhotos[player.name] || null}
-                    />
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
+        <ConvocacaoClient clubLogos={clubLogos} playerPhotos={playerPhotos} />
 
-        {/* Footer note */}
         <p className="mt-12 text-center text-gray-600 text-xs">
           * Lista preliminar vazada. A convocação oficial de 26 jogadores será anunciada por Ancelotti no Museu do Amanhã, Rio de Janeiro.
         </p>

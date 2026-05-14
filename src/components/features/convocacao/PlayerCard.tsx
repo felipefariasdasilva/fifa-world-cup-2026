@@ -5,14 +5,21 @@ interface PlayerCardProps {
   player: Player;
   clubLogo: string | null;
   playerPhoto: string | null;
+  onClick?: () => void;
 }
 
-export default function PlayerCard({ player, clubLogo, playerPhoto }: PlayerCardProps) {
+export default function PlayerCard({ player, clubLogo, playerPhoto, onClick }: PlayerCardProps) {
   const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=111827&color=facc15&size=128&bold=true&format=png`;
   const photoSrc = playerPhoto ?? avatarUrl;
 
   return (
-    <div className="bg-gray-900/60 border border-white/10 rounded-xl p-3 flex items-center gap-3 hover:border-yellow-500/30 transition-colors group">
+    <div
+      className="bg-gray-900/60 border border-white/10 rounded-xl p-3 flex items-center gap-3 hover:border-yellow-500/40 hover:bg-gray-800/60 transition-colors group cursor-pointer"
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick(); } : undefined}
+    >
       {/* Player photo */}
       <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-gray-800 ring-2 ring-white/5">
         <Image
