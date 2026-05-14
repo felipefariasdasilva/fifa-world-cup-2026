@@ -1,15 +1,16 @@
 import { Metadata } from "next";
 import { players, POSITIONS, POSITION_LABELS, POSITION_ICONS } from "@/data/players";
-import { getClubLogos } from "@/lib/sportsdb";
 import PlayerCard from "@/components/features/convocacao/PlayerCard";
+import manifest from "@/data/assets-manifest.json";
 
 export const metadata: Metadata = {
   title: "Convocação — Copa do Mundo 2026",
   description: "Pré-lista de 55 jogadores da Seleção Brasileira para a Copa do Mundo FIFA 2026.",
 };
 
-export default async function ConvocacaoPage() {
-  const clubLogos = await getClubLogos(players.map((p) => p.club));
+export default function ConvocacaoPage() {
+  const clubLogos: Record<string, string> = manifest.clubs;
+  const playerPhotos: Record<string, string> = manifest.players;
 
   return (
     <main className="min-h-screen bg-gray-950 px-4 py-8 md:py-12 relative">
@@ -48,6 +49,7 @@ export default async function ConvocacaoPage() {
                       key={player.id}
                       player={player}
                       clubLogo={clubLogos[player.club] || null}
+                      playerPhoto={playerPhotos[player.name] || null}
                     />
                   ))}
                 </div>
