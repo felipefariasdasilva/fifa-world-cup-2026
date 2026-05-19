@@ -1,22 +1,7 @@
 import CountdownTimer from "@/components/features/countdown/CountdownTimer";
-import { ConvocacaoInfo } from "@/types";
 
-// Convocação da Seleção Brasileira - 18 de maio de 2026, 17:00 BRT (UTC-3)
-const CONVOCACAO_DATE = new Date("2026-05-18T20:00:00Z");
-
-const convocacao: ConvocacaoInfo = {
-  date: CONVOCACAO_DATE,
-  displayDate: "18 de maio de 2026",
-  displayTime: "17h00 (horário de Brasília)",
-  location: "Museu do Amanhã — Rio de Janeiro, RJ",
-  channels: [
-    { name: "TV Globo", url: "https://www.globo.com/esporte" },
-    { name: "SporTV", url: "https://sportv.globo.com" },
-    { name: "Globoplay", url: "https://globoplay.globo.com" },
-    { name: "CBF TV (YouTube)", url: "https://www.youtube.com/@CBFfutebol" },
-    { name: "ge.globo.com", url: "https://ge.globo.com" },
-  ],
-};
+// Brasil x Marrocos — 13 de junho de 2026, 19h BRT (22:00 UTC)
+const FIRST_GAME_DATE = new Date("2026-06-13T22:00:00Z");
 
 export default function HomePage() {
   return (
@@ -42,16 +27,19 @@ export default function HomePage() {
             <span className="text-4xl">🇧🇷</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-black text-white leading-tight">
-            CONVOCAÇÃO PARA A
+            FALTAM PARA A ESTREIA DO BRASIL
           </h1>
           <h2 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-green-400 via-yellow-400 to-green-400 bg-clip-text text-transparent leading-tight">
             COPA DO MUNDO 2026
           </h2>
-          <p className="text-gray-400 text-lg mt-2">Faltam apenas...</p>
+          <p className="text-gray-400 text-lg mt-2">Brasil 🇧🇷 × 🇲🇦 Marrocos</p>
         </div>
 
         {/* Countdown */}
-        <CountdownTimer targetDate={CONVOCACAO_DATE} />
+        <CountdownTimer
+          targetDate={FIRST_GAME_DATE}
+          overdueMessage="🇧🇷 VAMOS BRASIL! O JOGO COMEÇOU! 🇧🇷"
+        />
 
         {/* Info cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full mt-4">
@@ -63,54 +51,34 @@ export default function HomePage() {
                 Data &amp; Horário
               </span>
             </div>
-            <p className="text-white font-bold text-lg">{convocacao.displayDate}</p>
-            <p className="text-gray-300 text-sm mt-1">{convocacao.displayTime}</p>
+            <p className="text-white font-bold text-lg">13 de junho de 2026</p>
+            <p className="text-gray-300 text-sm mt-1">19h00 (horário de Brasília)</p>
           </div>
 
           {/* Location */}
           <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-yellow-500/30 transition-colors">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">📍</span>
+              <span className="text-2xl">🏟️</span>
               <span className="text-xs font-semibold tracking-widest text-yellow-500 uppercase">
-                Local
+                Estádio
               </span>
             </div>
-            <p className="text-white font-bold text-lg">Museu do Amanhã</p>
-            <p className="text-gray-300 text-sm mt-1">Rio de Janeiro, RJ — Brasil</p>
+            <p className="text-white font-bold text-lg">MetLife Stadium</p>
+            <p className="text-gray-300 text-sm mt-1">East Rutherford, New Jersey — EUA</p>
           </div>
 
-          {/* Where to watch */}
+          {/* Group */}
           <div className="bg-gray-900/60 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:border-yellow-500/30 transition-colors">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">📺</span>
+              <span className="text-2xl">🏆</span>
               <span className="text-xs font-semibold tracking-widest text-yellow-500 uppercase">
-                Onde assistir
+                Fase de Grupos
               </span>
             </div>
-            <div className="flex flex-col gap-1.5">
-              {convocacao.channels.map((channel) =>
-                channel.url ? (
-                  <a
-                    key={channel.name}
-                    href={channel.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-gray-300 hover:text-yellow-400 transition-colors flex items-center gap-1.5"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block flex-shrink-0" />
-                    {channel.name}
-                  </a>
-                ) : (
-                  <span
-                    key={channel.name}
-                    className="text-sm text-gray-300 flex items-center gap-1.5"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block flex-shrink-0" />
-                    {channel.name}
-                  </span>
-                )
-              )}
-            </div>
+            <p className="text-white font-bold text-lg">Grupo C</p>
+            <p className="text-gray-300 text-sm mt-1">
+              🇧🇷 Brasil · 🇲🇦 Marrocos · 🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia · 🇭🇹 Haiti
+            </p>
           </div>
         </div>
 

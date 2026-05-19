@@ -6,9 +6,10 @@ import { CountdownTime } from "@/types";
 
 interface CountdownTimerProps {
   targetDate: Date;
+  overdueMessage?: string;
 }
 
-export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
+export default function CountdownTimer({ targetDate, overdueMessage }: CountdownTimerProps) {
   const [time, setTime] = useState<CountdownTime>(getCountdown(targetDate));
   const [isOver, setIsOver] = useState(false);
 
@@ -35,7 +36,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
     return (
       <div className="text-center">
         <p className="text-4xl md:text-6xl font-bold text-yellow-400 animate-pulse">
-          🇧🇷 A CONVOCAÇÃO JÁ ACONTECEU! 🇧🇷
+          {overdueMessage ?? "🇧🇷 A CONVOCAÇÃO JÁ ACONTECEU! 🇧🇷"}
         </p>
       </div>
     );

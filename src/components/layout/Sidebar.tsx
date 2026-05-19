@@ -9,6 +9,7 @@ const navItems = [
   { href: "/convocacao", label: "Convocação", icon: "👕" },
   { href: "/jogos", label: "Jogos", icon: "⚽" },
   { href: "/estadios", label: "Estádios", icon: "🏟️" },
+  { href: "/timeline", label: "Timeline", icon: "📅" },
 ];
 
 export default function Sidebar() {
